@@ -3,19 +3,47 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout}">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
 
-  <div layout:fragment="contents">
-    <p th:text="${test}"></p>
-    'thymeleaf-layout-dialect' version을 3.0.0아래로 하니깐 적용 안되더라.
-    <div>index.html wefewf입니다.</div>
-  </div>
+    <div layout:fragment="contents">
+      <style>
+        .cm-list_table-cover {
+          border: 1px solid black; 
+          border-radius: 0.2rem;
+        }
+        table {
+          border-collapse: collapse;
+          width: 100%;
+          text-align: center;
+        }
+        td {
+          border-left: 1px solid black;
+          padding: 1.2rem;
+        }
+        td:first-child {
+          border-left: none;
+        }
+      </style>
 
-</body>
+      <div class="cm-list_table-cover">
+        <table>
+          <tr th:each="item : ${cmList}">
+            <td th:text="${itemStat.index}"></td>
+            <td th:text="${item.categoryCode}"></td>
+            <td th:text="${item.title}"></td>
+            <td th:text="${item.contents}"></td>
+            <td th:text="${item.view}"></td>
+            <td th:text="${item.createDate}"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    
+  </body>
 </html>
