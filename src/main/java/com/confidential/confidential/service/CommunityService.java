@@ -2,11 +2,14 @@ package com.confidential.confidential.service;
 
 import java.util.List;
 
+import com.confidential.confidential.common.responseHandler.ResponseDto;
+import com.confidential.confidential.common.responseHandler.ResponseService;
 import com.confidential.confidential.dto.CommunityDto;
 import com.confidential.confidential.entity.community.Community;
 import com.confidential.confidential.repository.CommunityRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -19,30 +22,32 @@ public class CommunityService {
 
   @Autowired
   CommunityRepository communityRepository;
+  @Autowired
+  ResponseService responseService;
 
   /**
    * 카테고리별 커뮤니티 리스트
    */
   public List<Community> getCommunityListByCt(String categoryCd) {
 
-    List<Community> cmList = communityRepository.findAllByCategoryCode(categoryCd);
+    List<Community> cmList = communityRepository.findAllByCategoryCode(categoryCd, Sort.by(Sort.Direction.DESC, "communityId"));
     return cmList;
   }
 
   /**
-   * 커뮤니티 생성
+   * 글 생성
    */
-  public ResponseEntity createCommunity(CommunityDto communityDto) {
-
-    Community cm = Community.builder()
-                            .memberBasId(1L)
-                            .categoryCode("A")
-                            .title("sss")
-                            .contents("안녕하세요")
-                            .build();
-    communityRepository.save(cm);
-
-    return new ResponseEntity<>(HttpStatus.OK);
+  public ResponseEntity<ResponseDto> createArticle(CommunityDto communityDto) {
+    
+    Community newArticle = Community.builder()
+                                      .memberBasId(1L)
+                                      .categoryCode(communityDto.getCategoryCode())
+                                      .title(communityDto.getTitle())
+                                      .contents(communityDto.getContents())
+                                      .build();
+    log.info("newArticle : {}", newArticle);
+    communityRepository.save(newArticle);
+    return responseService.ok(HttpStatus.OK);
   }
 
   /**

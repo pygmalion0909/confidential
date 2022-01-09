@@ -46,9 +46,9 @@ public class CommunityController {
   @PostMapping("/api/new")
   @ResponseBody
   @ApiOperation(value="커뮤니티 생성Api", notes = "커뮤니티 글 생성Api")
-  public ResponseEntity apiCreateCommunity(@RequestBody CommunityDto communityDto) {
-    log.info("[Community Create Api] communityDto: {}", communityDto);
-    return communityService.createCommunity(communityDto);
+  public ResponseEntity apiCreateArticle(@RequestBody CommunityDto communityDto) {
+    log.info("[Community Create Controller] communityDto: {}", communityDto);
+    return communityService.createArticle(communityDto);
   }
 
   @PutMapping("/api/update")
