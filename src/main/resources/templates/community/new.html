@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+
+    <div layout:fragment="contents">
+      <!-- 카테고리 -->
+      <select name="" id="">
+        <option value="A">카테고리A</option>
+        <option value="B">카테고리B</option>
+        <option value="C">카테고리C</option>
+      </select>
+
+      <!-- 글작성 -->
+      <div class="article">
+        <input type="text" id="title">
+        <textarea name="" id="contents" cols="30" rows="10"></textarea>
+        <button id="createBtn">등록</button>
+      </div>
+
+      <script>
+        $("#createBtn").click(async () => {
+          const title = $("#title").val();
+          const contents = $("#contents").val();
+          const resultApi = await requestPostApi("/community/api/new", {title, contents});
+          console.log('resultApi', resultApi);
+        });
+
+      </script>
+    </div>
+
+  </body>
+</html>

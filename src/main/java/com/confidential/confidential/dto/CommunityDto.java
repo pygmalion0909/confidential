@@ -1,10 +1,11 @@
 package com.confidential.confidential.dto;
 
-import groovy.transform.ToString;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-@Getter @Setter
+@Getter
+@Setter
 @ToString
 public class CommunityDto {
 

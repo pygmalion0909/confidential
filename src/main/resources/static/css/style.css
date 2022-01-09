@@ -1,0 +1,50 @@
+/* reset */
+html,
+body{
+	margin: 0;
+	padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+a,
+span,
+ul,
+li,
+ol,
+button,
+label,
+i,
+textarea{
+	color: #484554;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	list-style: none;
+	outline: none;
+}
+
+/* common */
+.layout{
+	min-width: 75%;
+	max-width: 75%;
+	margin: 0 auto;
+}
+
+/* header */
+.header{
+	background: lightblue;
+  border-bottom: 1px solid #484554;
+}
+.header_nav-ul{
+	display: flex;
+}
+.header_nav-li{
+	margin-right: 0.5rem;
+}

@@ -8,8 +8,17 @@
 </head>
 <body>
   
-  <div th:fragment="headerFragment">
-    <h1>header</h1>
+  <div class="header" th:fragment="headerFragment">
+    <div class="layout">
+      <ul class="header_nav-ul">
+        <li class="header_nav-li">로고</li>
+        <li class="header_nav-li">검색</li>
+        <li class="header_nav-li">
+          <a th:href="@{/community/new}">글쓰기</a>
+        </li>
+        <li class="header_nav-li">로그인</li>
+      </ul>
+    </div>
   </div>
 
 </body>

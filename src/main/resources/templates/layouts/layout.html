@@ -6,15 +6,22 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="/js/utils/api.js"></script>
+  
+  <title>Confidential : 당신의 속마음</title>
+  
 </head>
 <body>
 
-  <h1>레이아웃페이지</h1>
-
   <div th:replace="~{layouts/header :: headerFragment}"></div>
   
-  <section layout:fragment="contents"></section>
-
+  <div class="layout">
+    <section layout:fragment="contents"></section>
+  </div>
+  
 </body>
 </html>
